@@ -1,1 +1,17 @@
-<p>sidebar-all-notes works!</p>
+<div class="sidebar-all-notes-wrapper">
+  <button class="button primary-button">+ Crear nota</button>
+  <ul class="sidebar-all-notes-list">
+    @for (note of notes(); track $index) {
+    <li class="sidebar-all-notes-list-item">
+      <h3 class="note-title">{{ note.title }}</h3>
+      <div class="note-tags-wrapper">
+        @for (tag of note.tags; track $index) {
+        <span class="tag">{{ tag }}</span
+        >}
+      </div>
+      <div class="note-updated-at">{{ note.updated_at | date : 'mediumDate' }}</div>
+    </li>
+    <hr class="text-neutral-200" />
+    }
+  </ul>
+</div>

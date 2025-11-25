@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@import './../../../../../../styles.css';
+
+.sidebar-all-notes-wrapper {
+  @apply flex-1 flex flex-col items-stretch gap-4;
+}
+
+.sidebar-all-notes-list {
+  @apply gap-1 overflow-y-auto;
+}
+
+.sidebar-all-notes-list-item {
+  @apply p-2 flex flex-col gap-3 rounded-md hover:bg-neutral-100 cursor-pointer;
+}
+
+.note-title {
+  @apply font-semibold text-[16px] leading-[120%] -tracking-[0.3px];
+}
+
+.note-tags-wrapper {
+  @apply flex gap-1 flex-wrap;
+}
+
+.tag {
+  @apply rounded-sm px-1.5 py-0.5 text-neutral-950 text-[12px] leading-[120%] -tracking-[0.2px] bg-neutral-200;
+}
+
+.note-updated-at {
+  @apply text-neutral-700 text-[12px] leading-[120%] -tracking-[0.2px];
+}
