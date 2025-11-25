@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import './../../../styles.css';
+
+.dashboard-wrapper {
+  @apply w-screen h-screen hidden desktop:flex items-stretch overflow-y-hidden;
+}
+
+app-sidebar-navigation {
+  @apply basis-[272px] h-screen overflow-hidden border-r border-r-neutral-200;
+}
+
+app-notes {
+  @apply flex-1 flex items-stretch overflow-hidden;
+}

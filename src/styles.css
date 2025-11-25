@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+
+* {
+  font-family: Inter;
+}
+
+@theme {
+  --color-neutral-200: #e0e4ea;
+  --color-neutral-300: #cacfd8;
+  --color-neutral-500: #717784;
+  --breakpoint-desktop: 1280px;
+}
+
+.input {
+  @apply border border-neutral-300 rounded-lg placeholder-neutral-500 text-[14px] leading-[130%] -tracking-[0.2px];
+}

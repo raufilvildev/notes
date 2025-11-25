@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+@import './../../../../../styles.css';
+
+.sidebar-navigation-wrapper {
+  @apply flex flex-col items-stretch gap-4 px-4 py-3 h-screen w-[272px];
+}
+
+.logo-wrapper {
+  @apply py-3;
+}
+
+.sidebar-navigation-list {
+  @apply flex flex-col gap-2 flex-1 overflow-hidden;
+}
+
+.sidebar-navigation-list {
+  @apply flex flex-col gap-2;
+}
+
+.active-archived-notes-wrapper {
+  @apply flex flex-col gap-1;
+}
+
+.sidebar-navigation-list-item {
+  @apply flex items-center gap-2 px-3 py-2 hover:bg-neutral-100 rounded-lg cursor-pointer;
+}
+
+.sidebar-navigation-list-item-icon-wrapper {
+  @apply w-5 h-5;
+}
+
+.sidebar-navigation-list-item-icon {
+  @apply w-full h-auto;
+}
+
+.sidebar-navigation-list-item-text {
+  @apply flex-1 text-[14px] leading-[120%] -tracking-[0.3px] font-medium;
+}
+
+.sidebar-navigation-list-item-right-arrow-wrapper {
+  @apply w-1.5 h-2.5;
+}
+
+.sidebar-navigation-list-item-right-arrow {
+  @apply w-full h-auto;
+}
+
+.tags-title {
+  @apply px-2 text-neutral-500 font-medium text-[14px] leading-[120%] -tracking-[0.2px];
+}
+
+.tags-wrapper {
+  @apply flex flex-col gap-1 overflow-y-auto;
+}

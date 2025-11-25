@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+@import './../../../../../../styles.css';
+
+.page-header-wrapper {
+  @apply flex-1 h-[81px] px-8 flex items-center justify-between;
+}
+
+.page-header-title {
+  @apply font-bold text-[24px] leading-[120%] -tracking-[0.5px];
+}
+
+.input-settings-icon-wrapper {
+  @apply flex items-center gap-4;
+}
+
+.input-wrapper {
+  @apply relative w-[325px];
+}
+
+.input {
+  @apply w-full pl-10.5 pr-4 py-3;
+}
+
+.search-icon {
+  @apply absolute top-1/2 left-4 -translate-y-1/2;
+}
+
+.settings-icon-wrapper {
+  @apply w-11 h-11 flex items-center cursor-pointer;
+}
+
+.settings-icon {
+  @apply w-6 h-6;
+}

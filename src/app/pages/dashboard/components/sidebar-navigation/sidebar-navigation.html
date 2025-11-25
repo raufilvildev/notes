@@ -1,0 +1,62 @@
+<div class="sidebar-navigation-wrapper">
+  <div class="logo-wrapper">
+    <img src="images/logo.svg" alt="Logo de Notes" />
+  </div>
+  <ul class="sidebar-navigation-list">
+    <div class="active-archived-notes-wrapper">
+      <li class="sidebar-navigation-list-item">
+        <div class="sidebar-navigation-list-item-icon-wrapper">
+          <img src="images/icon-home.svg" alt="" class="sidebar-navigation-list-item-icon" />
+        </div>
+        <p class="sidebar-navigation-list-item-text">Todas las notas</p>
+        <div class="sidebar-navigation-list-item-right-arrow-wrapper">
+          <img
+            src="images/icon-arrow-right.svg"
+            alt="Icono de flecha derecha"
+            class="sidebar-navigation-list-item-right-arrow"
+          />
+        </div>
+      </li>
+      <li class="sidebar-navigation-list-item">
+        <div class="sidebar-navigation-list-item-icon-wrapper">
+          <img
+            src="images/icon-archive.svg"
+            alt="Icono de archivar"
+            class="sidebar-navigation-list-item-icon"
+          />
+        </div>
+        <p class="sidebar-navigation-list-item-text">Notas archivadas</p>
+        <div class="sidebar-navigation-list-item-right-arrow-wrapper">
+          <img
+            src="images/icon-arrow-right.svg"
+            alt="Icono de flecha derecha"
+            class="sidebar-navigation-list-item-right-arrow"
+          />
+        </div>
+      </li>
+    </div>
+    <hr class="text-neutral-200" />
+    <h2 class="tags-title">Etiquetas</h2>
+    <div class="tags-wrapper">
+      @for (tag of tags(); track $index) {
+      <li class="sidebar-navigation-list-item">
+        <div class="sidebar-navigation-list-item-icon-wrapper">
+          <img
+            src="images/icon-tag.svg"
+            alt="Icono de etiqueta"
+            class="sidebar-navigation-list-item-icon"
+          />
+        </div>
+        <p class="sidebar-navigation-list-item-text">{{ tag }}</p>
+        <div class="sidebar-navigation-list-item-right-arrow-wrapper">
+          <img
+            src="images/icon-arrow-right.svg"
+            alt="Icono de flecha derecha"
+            class="sidebar-navigation-list-item-right-arrow"
+          />
+        </div>
+      </li>
+      }
+    </div>
+  </ul>
+</div>
