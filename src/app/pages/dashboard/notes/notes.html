@@ -13,6 +13,10 @@
     } @else if (showContent) {
     <app-content [note]="note"></app-content>
     }
+    <app-menu-bar
+      (allNotesOutput)="allNotesOutput.emit()"
+      (archivedNotesOutput)="archivedNotesOutput.emit()"
+    ></app-menu-bar>
   </div>
 
   <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper-desktop">

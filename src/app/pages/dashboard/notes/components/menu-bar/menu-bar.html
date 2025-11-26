@@ -1,0 +1,75 @@
+<ul class="menu-bar-wrapper">
+  <li
+    class="menu-bar-item"
+    [class.bg-blue-50]="activeButtons[0]"
+    [class.hover:bg-blue-50!]="activeButtons[0]"
+    (click)="activeButtons = [true, false, false, false, false]; allNotesOutput.emit()"
+  >
+    <img
+      [src]="'images/icon-home' + (activeButtons[0] ? '-blue-500' : '-neutral-600') + '.svg'"
+      alt="Icono de inicio"
+      class="menu-bar-item-icon"
+    />
+    <span class="menu-bar-item-name" [class.text-blue-500!]="activeButtons[0]">Inicio</span>
+  </li>
+  <div class="divisor"></div>
+
+  <li
+    class="menu-bar-item"
+    [class.bg-blue-50]="activeButtons[1]"
+    [class.hover:bg-blue-50!]="activeButtons[1]"
+    (click)="activeButtons = [false, true, false, false, false]"
+  >
+    <img
+      [src]="'images/icon-search' + (activeButtons[1] ? '-blue-500' : '-neutral-600') + '.svg'"
+      alt="Icono de buscar"
+      class="menu-bar-item-icon"
+    />
+    <span class="menu-bar-item-name" [class.text-blue-500!]="activeButtons[1]">Buscar</span>
+  </li>
+  <div class="divisor"></div>
+
+  <li
+    class="menu-bar-item"
+    [class.bg-blue-50]="activeButtons[2]"
+    [class.hover:bg-blue-50!]="activeButtons[2]"
+    (click)="activeButtons = [false, false, true, false, false]; archivedNotesOutput.emit()"
+  >
+    <img
+      [src]="'images/icon-archive' + (activeButtons[2] ? '-blue-500' : '-neutral-600') + '.svg'"
+      alt="Icono de archivados"
+      class="menu-bar-item-icon"
+    />
+    <span class="menu-bar-item-name" [class.text-blue-500!]="activeButtons[2]">Archivados</span>
+  </li>
+  <div class="divisor"></div>
+
+  <li
+    class="menu-bar-item"
+    [class.bg-blue-50]="activeButtons[3]"
+    [class.hover:bg-blue-50!]="activeButtons[3]"
+    (click)="activeButtons = [false, false, false, true, false]"
+  >
+    <img
+      [src]="'images/icon-tag' + (activeButtons[3] ? '-blue-500' : '-neutral-600') + '.svg'"
+      alt="Icono de etiquetas"
+      class="menu-bar-item-icon"
+    />
+    <span class="menu-bar-item-name" [class.text-blue-500!]="activeButtons[3]">Etiquetas</span>
+  </li>
+  <div class="divisor"></div>
+
+  <li
+    class="menu-bar-item"
+    [class.bg-blue-50]="activeButtons[4]"
+    [class.hover:bg-blue-50!]="activeButtons[4]"
+    (click)="activeButtons = [false, false, false, false, true]"
+  >
+    <img
+      [src]="'images/icon-settings' + (activeButtons[4] ? '-blue-500' : '-neutral-600') + '.svg'"
+      alt="Icono de ajustes"
+      class="menu-bar-item-icon"
+    />
+    <span class="menu-bar-item-name" [class.text-blue-500!]="activeButtons[4]">Ajustes</span>
+  </li>
+</ul>
