@@ -1,8 +1,20 @@
 @import 'tailwindcss';
 @import './../../../../../../styles.css';
 
-.page-header-wrapper {
-  @apply flex-1 h-[81px] px-8 flex items-center justify-between;
+.header {
+  @apply flex-1;
+}
+
+.page-header-wrapper-mobile-tablet {
+  @apply flex-1 h-[81px] flex items-center desktop:hidden bg-neutral-100;
+}
+
+.logo-wrapper {
+  @apply basis-full px-8 py-4 flex items-center;
+}
+
+.page-header-wrapper-desktop {
+  @apply flex-1 h-[81px] px-8 hidden desktop:flex items-center justify-between;
 }
 
 .page-header-title {

@@ -4,7 +4,7 @@
     (allNotesOutput)="allNotesOutput.emit()"
     (searchNotesOutput)="searchNotesOutput.emit($event)"
   ></app-page-header>
-  <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper">
+  <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper-desktop">
     <app-sidebar-all-notes [notes]="notes()" (noteOutput)="note = $event"></app-sidebar-all-notes>
     <app-content [note]="note"></app-content>
     <app-sidebar-right-menu
@@ -13,5 +13,15 @@
       (restoreNote)="restoreNote.emit($event)"
       (deleteNote)="deleteNote.emit($event)"
     ></app-sidebar-right-menu>
+  </div>
+  <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper-mobile-tablet">
+    @if (showSidebarAllNotes) {
+    <app-sidebar-all-notes
+      [notes]="notes()"
+      (noteOutput)="note = $event; showSidebarAllNotes = false; showContent = true"
+    ></app-sidebar-all-notes>
+    } @else if (showContent) {
+    <app-content [note]="note"></app-content>
+    }
   </div>
 </div>

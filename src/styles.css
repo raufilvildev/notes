@@ -21,6 +21,7 @@
   --color-blue-700: #2547d0;
 
   --breakpoint-desktop: 1280px;
+  --breakpoint-tablet: 768px;
 }
 
 /* Utilidades de texto */

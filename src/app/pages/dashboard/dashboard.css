@@ -2,11 +2,11 @@
 @import './../../../styles.css';
 
 .dashboard-wrapper {
-  @apply w-screen h-screen hidden desktop:flex items-stretch overflow-y-hidden;
+  @apply w-screen h-screen flex items-stretch overflow-y-hidden;
 }
 
 app-sidebar-navigation {
-  @apply basis-[272px] h-screen overflow-hidden border-r border-r-neutral-200;
+  @apply hidden desktop:flex basis-[272px] h-screen overflow-hidden border-r border-r-neutral-200;
 }
 
 app-notes {

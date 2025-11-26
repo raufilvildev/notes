@@ -22,4 +22,6 @@ export class Notes {
   searchNotesOutput = output<string>();
 
   note?: INote;
+  showSidebarAllNotes: boolean = true;
+  showContent: boolean = false;
 }

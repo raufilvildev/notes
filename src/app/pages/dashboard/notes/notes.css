@@ -6,15 +6,19 @@
 }
 
 app-page-header {
-  @apply flex border-b border-b-neutral-200;
+  @apply flex desktop:border-b desktop:border-b-neutral-200;
 }
 
-.sidebar-all-notes-content-sidebar-right-menu-wrapper {
-  @apply flex-1 flex items-stretch overflow-hidden;
+.sidebar-all-notes-content-sidebar-right-menu-wrapper-desktop {
+  @apply flex-1 hidden desktop:flex items-stretch overflow-hidden;
+}
+
+.sidebar-all-notes-content-sidebar-right-menu-wrapper-mobile-tablet {
+  @apply flex-1 flex flex-col desktop:hidden items-stretch h-full;
 }
 
 app-sidebar-all-notes {
-  @apply basis-[272px] pl-8 pr-4 py-5 flex items-stretch gap-4 border-r border-r-neutral-200;
+  @apply basis-full desktop:basis-[272px] pl-8 pr-4 py-5 flex flex-col gap-4 desktop:border-r desktop:border-r-neutral-200 overflow-y-auto h-full;
 }
 
 app-content {
