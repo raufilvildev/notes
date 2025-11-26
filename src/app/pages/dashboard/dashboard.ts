@@ -174,6 +174,9 @@ export class Dashboard {
   ];
   editedNotes: INote[] = [];
   tags: string[] = [];
+  title: string = 'Todas las notas';
+  allNotesInput: boolean = true;
+  searchNotesInput: boolean = false;
 
   ngOnInit() {
     this.editedNotes = [...this.notes];
@@ -184,4 +187,41 @@ export class Dashboard {
       });
     });
   }
+
+  onAllNotes() {
+    this.title = 'Todas las notas';
+    this.editedNotes = this.notes.filter((note) => note.status === 'active');
+    this.allNotesInput = true;
+    this.searchNotesInput = false;
+  }
+
+  onArchivedNotes() {
+    this.title = 'Notas archivadas';
+    this.editedNotes = this.notes.filter((note) => note.status === 'archived');
+  }
+
+  onTaggedNotes(tag: string) {
+    this.title = `Notas etiquetadas: ${tag}`;
+    this.editedNotes = this.notes.filter((note) => note.tags.includes(tag));
+  }
+
+  onSearchNotes(search: string) {
+    this.title = `Mostrando resultados para: ${search}`;
+    this.editedNotes = this.notes.filter(
+      (note) =>
+        note.title.includes(search) ||
+        note.content.includes(search) ||
+        note.tags.some((tag) => tag.includes(search))
+    );
+    this.allNotesInput = false;
+    this.searchNotesInput = true;
+  }
+
+  onCreateNote() {}
+
+  onArchiveNote(note: INote) {}
+
+  onRestoreNote(note: INote) {}
+
+  onDeleteNote(note: INote) {}
 }

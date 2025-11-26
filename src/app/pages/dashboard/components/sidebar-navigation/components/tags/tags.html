@@ -1,0 +1,27 @@
+<div class="tags-wrapper">
+  @for (tag of tags(); track $index) {
+  <li
+    class="sidebar-navigation-list-item"
+    [class.bg-neutral-100]="tag === tagSelected()"
+    (click)="taggedNotesOutput.emit(tag)"
+  >
+    <div class="sidebar-navigation-list-item-icon-wrapper">
+      <img
+        [src]="'images/icon-tag' + (tag === tagSelected() ? '-blue-500' : '') + '.svg'"
+        alt="Icono de etiqueta"
+        class="sidebar-navigation-list-item-icon"
+      />
+    </div>
+    <p class="sidebar-navigation-list-item-text">{{ tag }}</p>
+    @if (tag === tagSelected()) {
+    <div class="sidebar-navigation-list-item-right-arrow-wrapper">
+      <img
+        src="images/icon-arrow-right.svg"
+        alt="Icono de flecha derecha"
+        class="sidebar-navigation-list-item-right-arrow"
+      />
+    </div>
+    }
+  </li>
+  }
+</div>

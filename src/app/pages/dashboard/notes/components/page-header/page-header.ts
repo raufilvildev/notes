@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-page-header',
@@ -8,4 +8,15 @@ import { Component, input } from '@angular/core';
 })
 export class PageHeader {
   title = input<string>('');
+
+  allNotesOutput = output<void>();
+  searchNotesOutput = output<string>();
+
+  onKeyDownEnter(search: string) {
+    if (!search) {
+      this.allNotesOutput.emit();
+      return;
+    }
+    this.searchNotesOutput.emit(search);
+  }
 }

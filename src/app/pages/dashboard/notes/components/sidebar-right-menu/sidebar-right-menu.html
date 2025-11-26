@@ -1,1 +1,34 @@
-<p>sidebar-right-menu works!</p>
+@if (note()) {
+<div class="sidebar-right-menu-wrapper">
+  <button
+    class="button border-button"
+    (click)="onArchiveRestoreNote()"
+    (mouseover)="hoverArchiveRestore = true"
+    (mouseleave)="hoverArchiveRestore = false"
+  >
+    <img
+      [src]="
+        (note()?.status === 'active' ? 'images/icon-archive' : 'images/icon-restore') +
+        (hoverArchiveRestore ? '-neutral-600' : '') +
+        '.svg'
+      "
+      [alt]="note()?.status === 'active' ? 'Icono de archivar' : 'Icono de restaurar'"
+      class="icon"
+    />
+    <p>{{ note()?.status === 'active' ? 'Archivar nota' : 'Restaurar nota' }}</p>
+  </button>
+  <button
+    class="button border-button"
+    (click)="onDeleteNote()"
+    (mouseover)="hoverDelete = true"
+    (mouseleave)="hoverDelete = false"
+  >
+    <img
+      [src]="'images/icon-delete' + (hoverDelete ? '-neutral-600' : '') + '.svg'"
+      alt="Icono de borrar"
+      class="icon"
+    />
+    <p>Borrar nota</p>
+  </button>
+</div>
+}

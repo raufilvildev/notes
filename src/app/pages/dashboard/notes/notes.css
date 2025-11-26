@@ -2,7 +2,7 @@
 @import './../../../../styles.css';
 
 .notes-wrapper {
-  @apply flex-1 flex flex-col h-screen;
+  @apply flex-1 h-screen flex flex-col overflow-hidden;
 }
 
 app-page-header {
@@ -10,7 +10,7 @@ app-page-header {
 }
 
 .sidebar-all-notes-content-sidebar-right-menu-wrapper {
-  @apply flex-1 flex items-stretch;
+  @apply flex-1 flex items-stretch overflow-hidden;
 }
 
 app-sidebar-all-notes {

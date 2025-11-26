@@ -1,1 +1,39 @@
-<p>content works!</p>
+@if (note()) {
+<div class="content-wrapper">
+  <h3 class="note-title">{{ note()?.title }}</h3>
+  <div class="tags-status-updated-at-wrapper">
+    <div class="icon-title-value-wrapper">
+      <div class="icon-title-wrapper">
+        <img src="images/icon-tag.svg" alt="Icono de etiqueta" class="icon" />
+        <p class="title">Etiquetas</p>
+      </div>
+      <p class="value">{{ (note()?.tags || []).join(', ') }}</p>
+    </div>
+
+    @if (note()?.status === 'archived') {
+    <div class="icon-title-value-wrapper">
+      <div class="icon-title-wrapper">
+        <img src="images/icon-status.svg" alt="Icono de estado" class="icon" />
+        <p class="title">Estado</p>
+      </div>
+      <p class="value">Archivado</p>
+    </div>
+    }
+
+    <div class="icon-title-value-wrapper">
+      <div class="icon-title-wrapper">
+        <img src="images/icon-clock.svg" alt="Icono de reloj" class="icon" />
+        <p class="title">Última vez editado</p>
+      </div>
+      <p class="value">{{ note()?.updated_at | date : 'mediumDate' }}</p>
+    </div>
+  </div>
+  <hr class="text-neutral-200" />
+  <div class="content">{{ note()?.content }}</div>
+  <hr class="text-neutral-200" />
+  <div class="buttons-wrapper">
+    <button class="button primary-button">Guardar nota</button>
+    <button class="button secondary-button">Cancelar</button>
+  </div>
+</div>
+}

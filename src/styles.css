@@ -5,25 +5,58 @@
   font-family: Inter;
 }
 
+/* Colores y breakpoints */
+
 @theme {
   --color-neutral-50: #f5f7fa;
   --color-neutral-200: #e0e4ea;
   --color-neutral-300: #cacfd8;
   --color-neutral-500: #717784;
   --color-neutral-600: #525866;
+  --color-neutral-700: #2b303b;
+  --color-neutral-800: #232530;
   --color-neutral-950: #0e121b;
 
   --color-blue-500: #335cff;
   --color-blue-700: #2547d0;
+
   --breakpoint-desktop: 1280px;
 }
 
+/* Utilidades de texto */
+
+@utility text-preset-1 {
+  @apply text-[24px] leading-[120%] -tracking-[0.5px] font-bold;
+}
+
+@utility text-preset-2 {
+  @apply text-[20px] leading-[120%] -tracking-[0.5px] font-bold;
+}
+
+@utility text-preset-3 {
+  @apply text-[16px] leading-[120%] -tracking-[0.3px] font-semibold;
+}
+
+@utility text-preset-4 {
+  @apply text-[14px] leading-[120%] -tracking-[0.2px] font-medium;
+}
+
+@utility text-preset-5 {
+  @apply text-[14px] leading-[120%] -tracking-[0.2px] font-normal;
+}
+
+@utility text-preset-6 {
+  @apply text-[12px] leading-[120%] -tracking-[0.2px] font-normal;
+}
+
+/* Inputs, botones */
+
 .input {
-  @apply border border-neutral-300 rounded-lg placeholder-neutral-500 text-[14px] leading-[130%] -tracking-[0.2px] px-4 py-3 hover:bg-neutral-50 focus-visible:shadow-[0_0_0_2px_#fff,0_0_0_4px_#717784] disabled:bg-neutral-50 disabled:placeholder-neutral-300;
+  @apply border border-neutral-300 rounded-lg placeholder-neutral-500 text-preset-5 px-4 py-3 hover:bg-neutral-50 focus-visible:shadow-[0_0_0_2px_#fff,0_0_0_4px_#717784] disabled:bg-neutral-50 disabled:placeholder-neutral-300;
 }
 
 .button {
-  @apply px-4 py-3 rounded-lg border font-medium text-[14px] leading-[120%] -tracking-[0.2px];
+  @apply px-4 py-3 rounded-lg border text-preset-4 cursor-pointer;
 }
 
 .primary-button {

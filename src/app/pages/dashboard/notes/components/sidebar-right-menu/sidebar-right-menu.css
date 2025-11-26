@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import './../../../../../../styles.css';
+
+.sidebar-right-menu-wrapper {
+  @apply flex-1 flex flex-col gap-3;
+}
+
+.border-button {
+  @apply flex items-center gap-3;
+}
+
+.icon {
+  @apply w-5 h-5;
+}

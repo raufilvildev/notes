@@ -1,8 +1,19 @@
 <header class="page-header-wrapper">
+  @if (title().split(': ').length === 2) {
+  <h2 class="page-header-title text-neutral-600">
+    {{ title().split(': ')[0] }}: <span class="text-neutral-950">{{ title().split(': ')[1] }}</span>
+  </h2>
+  } @else {
   <h2 class="page-header-title">{{ title() }}</h2>
+  }
   <div class="input-settings-icon-wrapper">
     <div class="input-wrapper">
-      <input type="text" class="input" placeholder="Busca por título, contenido, etiquetas..." />
+      <input
+        type="text"
+        class="input"
+        placeholder="Busca por título, contenido, etiquetas..."
+        (keydown.enter)="onKeyDownEnter($event.target.value)"
+      />
       <img src="images/icon-search.svg" alt="Icono de búsqueda" class="search-icon" />
     </div>
     <div class="settings-icon-wrapper">

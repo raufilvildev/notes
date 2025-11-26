@@ -6,7 +6,7 @@
 }
 
 .page-header-title {
-  @apply font-bold text-[24px] leading-[120%] -tracking-[0.5px];
+  @apply text-preset-1;
 }
 
 .input-settings-icon-wrapper {

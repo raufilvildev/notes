@@ -14,7 +14,7 @@
 }
 
 .note-title {
-  @apply font-semibold text-[16px] leading-[120%] -tracking-[0.3px];
+  @apply text-preset-3;
 }
 
 .note-tags-wrapper {
@@ -22,9 +22,9 @@
 }
 
 .tag {
-  @apply rounded-sm px-1.5 py-0.5 text-neutral-950 text-[12px] leading-[120%] -tracking-[0.2px] bg-neutral-200;
+  @apply rounded-sm px-1.5 py-0.5 text-neutral-950 text-preset-6 bg-neutral-200;
 }
 
 .note-updated-at {
-  @apply text-neutral-700 text-[12px] leading-[120%] -tracking-[0.2px];
+  @apply text-neutral-700 text-preset-6;
 }

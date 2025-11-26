@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { INote } from '../../../interfaces/i-note';
 import { PageHeader } from './components/page-header/page-header';
 import { SidebarAllNotes } from './components/sidebar-all-notes/sidebar-all-notes';
@@ -13,6 +13,13 @@ import { SidebarRightMenu } from './components/sidebar-right-menu/sidebar-right-
 })
 export class Notes {
   notes = input<INote[]>([]);
+  title = input<string>('');
 
-  title: string = 'Todas las notas';
+  archiveNote = output<INote>();
+  restoreNote = output<INote>();
+  deleteNote = output<INote>();
+  allNotesOutput = output<void>();
+  searchNotesOutput = output<string>();
+
+  note?: INote;
 }

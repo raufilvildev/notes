@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { INote } from '../../../../../interfaces/i-note';
 import { DatePipe } from '@angular/common';
 
@@ -10,4 +10,8 @@ import { DatePipe } from '@angular/common';
 })
 export class SidebarAllNotes {
   notes = input<INote[]>([]);
+
+  noteOutput = output<INote>();
+
+  selectedNoteUuid: string = '';
 }

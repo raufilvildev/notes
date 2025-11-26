@@ -1,8 +1,17 @@
 <div class="notes-wrapper">
-  <app-page-header [title]="title"></app-page-header>
+  <app-page-header
+    [title]="title()"
+    (allNotesOutput)="allNotesOutput.emit()"
+    (searchNotesOutput)="searchNotesOutput.emit($event)"
+  ></app-page-header>
   <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper">
-    <app-sidebar-all-notes [notes]="notes()"></app-sidebar-all-notes>
-    <app-content></app-content>
-    <app-sidebar-right-menu></app-sidebar-right-menu>
+    <app-sidebar-all-notes [notes]="notes()" (noteOutput)="note = $event"></app-sidebar-all-notes>
+    <app-content [note]="note"></app-content>
+    <app-sidebar-right-menu
+      [note]="note"
+      (archiveNote)="archiveNote.emit($event)"
+      (restoreNote)="restoreNote.emit($event)"
+      (deleteNote)="deleteNote.emit($event)"
+    ></app-sidebar-right-menu>
   </div>
 </div>

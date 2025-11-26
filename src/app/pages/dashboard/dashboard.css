@@ -10,5 +10,5 @@ app-sidebar-navigation {
 }
 
 app-notes {
-  @apply flex-1 flex items-stretch overflow-hidden;
+  @apply h-screen flex-1 flex items-stretch overflow-hidden;
 }

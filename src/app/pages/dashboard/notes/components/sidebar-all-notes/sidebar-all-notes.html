@@ -2,7 +2,11 @@
   <button class="button primary-button">+ Crear nota</button>
   <ul class="sidebar-all-notes-list">
     @for (note of notes(); track $index) {
-    <li class="sidebar-all-notes-list-item">
+    <li
+      class="sidebar-all-notes-list-item"
+      [class.bg-neutral-100]="note.uuid === selectedNoteUuid"
+      (click)="noteOutput.emit(note); selectedNoteUuid = note.uuid"
+    >
       <h3 class="note-title">{{ note.title }}</h3>
       <div class="note-tags-wrapper">
         @for (tag of note.tags; track $index) {
@@ -11,7 +15,8 @@
       </div>
       <div class="note-updated-at">{{ note.updated_at | date : 'mediumDate' }}</div>
     </li>
+    @if ($index + 1 < notes().length) {
     <hr class="text-neutral-200" />
-    }
+    } }
   </ul>
 </div>

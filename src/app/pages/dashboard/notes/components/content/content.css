@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+@import './../../../../../../styles.css';
+
+.content-wrapper {
+  @apply flex-1 px-6 py-5 flex flex-col gap-4;
+}
+
+.note-title {
+  @apply text-preset-1;
+}
+
+.tags-status-updated-at-wrapper {
+  @apply flex flex-col gap-2;
+}
+
+.icon-title-value-wrapper {
+  @apply flex items-center gap-2;
+}
+
+.icon-title-wrapper {
+  @apply w-[150px] py-1 flex items-center gap-1.5;
+}
+
+.icon {
+  @apply w-4 h-4;
+}
+
+.title {
+  @apply text-neutral-700 text-preset-5;
+}
+
+.value {
+  @apply text-neutral-950 text-preset-5;
+}
+
+.content {
+  @apply flex-1 text-neutral-800 text-preset-5;
+}
+
+.buttons-wrapper {
+  @apply flex items-center gap-4;
+}

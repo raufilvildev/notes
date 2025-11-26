@@ -4,11 +4,20 @@
   </div>
   <ul class="sidebar-navigation-list">
     <div class="active-archived-notes-wrapper">
-      <li class="sidebar-navigation-list-item">
+      <li
+        class="sidebar-navigation-list-item"
+        [class.bg-neutral-100]="allNotes"
+        (click)="allNotesOutput.emit(); allNotes = true; archivedNotes = false; tagSelected = ''"
+      >
         <div class="sidebar-navigation-list-item-icon-wrapper">
-          <img src="images/icon-home.svg" alt="" class="sidebar-navigation-list-item-icon" />
+          <img
+            [src]="'images/icon-home' + (allNotes ? '-blue-500' : '') + '.svg'"
+            alt=""
+            class="sidebar-navigation-list-item-icon"
+          />
         </div>
         <p class="sidebar-navigation-list-item-text">Todas las notas</p>
+        @if (allNotes) {
         <div class="sidebar-navigation-list-item-right-arrow-wrapper">
           <img
             src="images/icon-arrow-right.svg"
@@ -16,16 +25,24 @@
             class="sidebar-navigation-list-item-right-arrow"
           />
         </div>
+        }
       </li>
-      <li class="sidebar-navigation-list-item">
+      <li
+        class="sidebar-navigation-list-item"
+        [class.bg-neutral-100]="archivedNotes"
+        (click)="
+          archivedNotesOutput.emit(); allNotes = false; archivedNotes = true; tagSelected = ''
+        "
+      >
         <div class="sidebar-navigation-list-item-icon-wrapper">
           <img
-            src="images/icon-archive.svg"
+            [src]="'images/icon-archive' + (archivedNotes ? '-blue-500' : '') + '.svg'"
             alt="Icono de archivar"
             class="sidebar-navigation-list-item-icon"
           />
         </div>
         <p class="sidebar-navigation-list-item-text">Notas archivadas</p>
+        @if (archivedNotes) {
         <div class="sidebar-navigation-list-item-right-arrow-wrapper">
           <img
             src="images/icon-arrow-right.svg"
@@ -33,30 +50,20 @@
             class="sidebar-navigation-list-item-right-arrow"
           />
         </div>
+        }
       </li>
     </div>
     <hr class="text-neutral-200" />
     <h2 class="tags-title">Etiquetas</h2>
-    <div class="tags-wrapper">
-      @for (tag of tags(); track $index) {
-      <li class="sidebar-navigation-list-item">
-        <div class="sidebar-navigation-list-item-icon-wrapper">
-          <img
-            src="images/icon-tag.svg"
-            alt="Icono de etiqueta"
-            class="sidebar-navigation-list-item-icon"
-          />
-        </div>
-        <p class="sidebar-navigation-list-item-text">{{ tag }}</p>
-        <div class="sidebar-navigation-list-item-right-arrow-wrapper">
-          <img
-            src="images/icon-arrow-right.svg"
-            alt="Icono de flecha derecha"
-            class="sidebar-navigation-list-item-right-arrow"
-          />
-        </div>
-      </li>
-      }
-    </div>
+    <app-tags
+      [tags]="tags() || []"
+      [tagSelected]="tagSelected"
+      (taggedNotesOutput)="
+        taggedNotesOutput.emit($event);
+        allNotes = false;
+        archivedNotes = false;
+        tagSelected = $event
+      "
+    ></app-tags>
   </ul>
 </div>
