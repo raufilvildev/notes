@@ -1,6 +1,8 @@
 <div class="sidebar-all-notes-wrapper">
   <button class="button primary-button desktop">+ Crear nota</button>
-  <button class="button primary-button mobile-tablet">+</button>
+  <button class="button primary-button mobile-tablet">
+    <img src="images/icon-plus-white.svg" alt="Icono de crear" class="icon" />
+  </button>
   <ul class="sidebar-all-notes-list">
     @for (note of notes(); track $index) {
     <li

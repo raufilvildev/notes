@@ -14,7 +14,7 @@ app-page-header {
 }
 
 .sidebar-all-notes-content-sidebar-right-menu-wrapper-mobile-tablet {
-  @apply flex-1 flex flex-col desktop:hidden items-stretch h-full;
+  @apply flex-1 flex flex-col desktop:hidden items-stretch h-[calc(100vh-81px)];
 }
 
 app-sidebar-all-notes {
