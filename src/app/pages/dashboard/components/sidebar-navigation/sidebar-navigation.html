@@ -7,7 +7,7 @@
       <li
         class="sidebar-navigation-list-item"
         [class.bg-neutral-100]="allNotes"
-        (click)="allNotesOutput.emit(); allNotes = true; archivedNotes = false; tagSelected = ''"
+        (click)="allNotesOutput.emit(); allNotes = true; archivedNotes = false; selectedTag = ''"
       >
         <div class="sidebar-navigation-list-item-icon-wrapper">
           <img
@@ -31,7 +31,7 @@
         class="sidebar-navigation-list-item"
         [class.bg-neutral-100]="archivedNotes"
         (click)="
-          archivedNotesOutput.emit(); allNotes = false; archivedNotes = true; tagSelected = ''
+          archivedNotesOutput.emit(); allNotes = false; archivedNotes = true; selectedTag = ''
         "
       >
         <div class="sidebar-navigation-list-item-icon-wrapper">
@@ -57,12 +57,12 @@
     <h2 class="tags-title">Etiquetas</h2>
     <app-tags
       [tags]="tags() || []"
-      [tagSelected]="tagSelected"
+      [selectedTag]="selectedTag"
       (taggedNotesOutput)="
         taggedNotesOutput.emit($event);
         allNotes = false;
         archivedNotes = false;
-        tagSelected = $event
+        selectedTag = $event
       "
     ></app-tags>
   </ul>

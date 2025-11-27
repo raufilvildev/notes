@@ -18,7 +18,7 @@
     class="menu-bar-item"
     [class.bg-blue-50]="activeButtons[1]"
     [class.hover:bg-blue-50!]="activeButtons[1]"
-    (click)="activeButtons = [false, true, false, false, false]"
+    (click)="activeButtons = [false, true, false, false, false]; searchNotesOutput.emit()"
   >
     <img
       [src]="'images/icon-search' + (activeButtons[1] ? '-blue-500' : '-neutral-600') + '.svg'"
@@ -48,7 +48,7 @@
     class="menu-bar-item"
     [class.bg-blue-50]="activeButtons[3]"
     [class.hover:bg-blue-50!]="activeButtons[3]"
-    (click)="activeButtons = [false, false, false, true, false]"
+    (click)="activeButtons = [false, false, false, true, false]; tagsOutput.emit()"
   >
     <img
       [src]="'images/icon-tag' + (activeButtons[3] ? '-blue-500' : '-neutral-600') + '.svg'"

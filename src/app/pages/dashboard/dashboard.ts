@@ -176,6 +176,8 @@ export class Dashboard {
   tags: string[] = [];
   title: string = 'Todas las notas';
   allNotesInput: boolean = true;
+  archiveNotesInput: boolean = false;
+  taggedNotesInput: string = '';
   searchNotesInput: boolean = false;
 
   ngOnInit() {
@@ -192,17 +194,27 @@ export class Dashboard {
     this.title = 'Todas las notas';
     this.editedNotes = this.notes.filter((note) => note.status === 'active');
     this.allNotesInput = true;
+    this.archiveNotesInput = false;
+    this.taggedNotesInput = '';
     this.searchNotesInput = false;
   }
 
   onArchivedNotes() {
     this.title = 'Notas archivadas';
     this.editedNotes = this.notes.filter((note) => note.status === 'archived');
+    this.allNotesInput = false;
+    this.archiveNotesInput = true;
+    this.taggedNotesInput = '';
+    this.searchNotesInput = false;
   }
 
   onTaggedNotes(tag: string) {
     this.title = `Notas etiquetadas: ${tag}`;
     this.editedNotes = this.notes.filter((note) => note.tags.includes(tag));
+    this.allNotesInput = false;
+    this.archiveNotesInput = false;
+    this.taggedNotesInput = tag;
+    this.searchNotesInput = false;
   }
 
   onSearchNotes(search: string) {

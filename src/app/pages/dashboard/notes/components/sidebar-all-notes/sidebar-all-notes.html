@@ -3,8 +3,32 @@
   <button class="button primary-button mobile-tablet">
     <img src="images/icon-plus-white.svg" alt="Icono de crear" class="icon" />
   </button>
+  @if (title().split(': ').length === 2) {
+  <h2 class="title text-neutral-600">
+    {{ title().split(': ')[0] }}:
+    <span class="text-neutral-950">{{ title().split(': ')[1] }}</span>
+  </h2>
+  } @else {
+  <h2 class="title text-neutral-950">{{ title() }}</h2>
+  } @if (showSearchBar()) {
+  <div class="input-wrapper">
+    <input
+      type="text"
+      class="input"
+      placeholder="Busca por título, contenido, etiquetas..."
+      (keydown.enter)="onKeyDownEnter($event.target.value)"
+    />
+    <img src="images/icon-search.svg" alt="Icono de búsqueda" class="search-icon" />
+  </div>
+  }
+
   <ul class="sidebar-all-notes-list">
-    @for (note of notes(); track $index) {
+    @if (showSearchBar() && searchText) {
+    <p class="results-text text-neutral-700">
+      Todas las notas que coinciden con
+      <span class="text-neutral-950">{{ '"' + searchText + '"' }}</span> se muestran abajo.
+    </p>
+    } @for (note of editedNotes; track $index) {
     <li
       class="sidebar-all-notes-list-item"
       [class.bg-neutral-100]="note.uuid === selectedNoteUuid"

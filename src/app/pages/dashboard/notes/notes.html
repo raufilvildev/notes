@@ -8,14 +8,47 @@
     @if (showSidebarAllNotes) {
     <app-sidebar-all-notes
       [notes]="notes()"
-      (noteOutput)="note = $event; showSidebarAllNotes = false; showContent = true"
+      [title]="title()"
+      [showSearchBar]="showSearchBar"
+      (noteOutput)="
+        note = $event; showSidebarAllNotes = false; showContent = true; showTags = false
+      "
     ></app-sidebar-all-notes>
     } @else if (showContent) {
     <app-content [note]="note"></app-content>
+    } @else if (showTags) {
+    <app-tags
+      [notes]="allNotes()"
+      (taggedNotesOutput)="
+        taggedNotesOutput.emit($event);
+        showSidebarAllNotes = true;
+        showContent = false;
+        showTags = false;
+        showSearchBar = false
+      "
+    ></app-tags>
     }
     <app-menu-bar
-      (allNotesOutput)="allNotesOutput.emit()"
-      (archivedNotesOutput)="archivedNotesOutput.emit()"
+      (allNotesOutput)="
+        allNotesOutput.emit();
+        showSidebarAllNotes = true;
+        showContent = false;
+        showTags = false;
+        showSearchBar = false
+      "
+      (archivedNotesOutput)="
+        archivedNotesOutput.emit();
+        showSidebarAllNotes = true;
+        showContent = false;
+        showTags = false;
+        showSearchBar = false
+      "
+      (tagsOutput)="
+        showSidebarAllNotes = false; showContent = false; showTags = true; showSearchBar = false
+      "
+      (searchNotesOutput)="
+        showSidebarAllNotes = true; showContent = false; showTags = false; showSearchBar = true
+      "
     ></app-menu-bar>
   </div>
 

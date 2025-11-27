@@ -2,11 +2,27 @@
 @import './../../../../../../../styles.css';
 
 .tags-wrapper {
-  @apply flex-1 flex flex-col gap-1 overflow-y-auto;
+  @apply flex-1 flex flex-col gap-4 desktop:gap-1 px-8 py-6 tablet:px-4 tablet:py-5 desktop:p-0;
 }
 
-.sidebar-navigation-list-item {
+.tags-title {
+  @apply text-neutral-950 text-preset-1 desktop:hidden;
+}
+
+.tags-items-wrapper-desktop {
+  @apply hidden desktop:flex flex-col gap-1;
+}
+
+.tags-items-wrapper-mobile-tablet {
+  @apply flex-1 flex desktop:hidden flex-col gap-1 overflow-y-auto;
+}
+
+.sidebar-navigation-list-item-desktop {
   @apply flex items-center gap-2 px-3 py-2 hover:bg-neutral-100 rounded-lg cursor-pointer;
+}
+
+.sidebar-navigation-list-item-mobile-tablet {
+  @apply flex items-center gap-2 py-2.5 hover:bg-neutral-100 rounded-lg cursor-pointer;
 }
 
 .sidebar-navigation-list-item-icon-wrapper {

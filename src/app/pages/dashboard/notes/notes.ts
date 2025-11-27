@@ -5,15 +5,17 @@ import { SidebarAllNotes } from './components/sidebar-all-notes/sidebar-all-note
 import { Content } from './components/content/content';
 import { SidebarRightMenu } from './components/sidebar-right-menu/sidebar-right-menu';
 import { MenuBar } from './components/menu-bar/menu-bar';
+import { Tags } from '../components/sidebar-navigation/components/tags/tags';
 
 @Component({
   selector: 'app-notes',
-  imports: [PageHeader, SidebarAllNotes, Content, SidebarRightMenu, MenuBar],
+  imports: [PageHeader, SidebarAllNotes, Content, SidebarRightMenu, MenuBar, Tags],
   templateUrl: './notes.html',
   styleUrl: './notes.css',
 })
 export class Notes {
   notes = input<INote[]>([]);
+  allNotes = input<INote[]>([]);
   title = input<string>('');
 
   archiveNote = output<INote>();
@@ -22,8 +24,11 @@ export class Notes {
   allNotesOutput = output<void>();
   archivedNotesOutput = output<void>();
   searchNotesOutput = output<string>();
+  taggedNotesOutput = output<string>();
 
   note?: INote;
   showSidebarAllNotes: boolean = true;
   showContent: boolean = false;
+  showTags: boolean = false;
+  showSearchBar: boolean = false;
 }

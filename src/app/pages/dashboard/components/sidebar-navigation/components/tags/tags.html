@@ -1,27 +1,60 @@
 <div class="tags-wrapper">
-  @for (tag of tags(); track $index) {
-  <li
-    class="sidebar-navigation-list-item"
-    [class.bg-neutral-100]="tag === tagSelected()"
-    (click)="taggedNotesOutput.emit(tag)"
-  >
-    <div class="sidebar-navigation-list-item-icon-wrapper">
-      <img
-        [src]="'images/icon-tag' + (tag === tagSelected() ? '-blue-500' : '') + '.svg'"
-        alt="Icono de etiqueta"
-        class="sidebar-navigation-list-item-icon"
-      />
-    </div>
-    <p class="sidebar-navigation-list-item-text">{{ tag }}</p>
-    @if (tag === tagSelected()) {
-    <div class="sidebar-navigation-list-item-right-arrow-wrapper">
-      <img
-        src="images/icon-arrow-right.svg"
-        alt="Icono de flecha derecha"
-        class="sidebar-navigation-list-item-right-arrow"
-      />
-    </div>
+  <h2 class="tags-title">Etiquetas</h2>
+  <div class="tags-items-wrapper-desktop">
+    @for (tag of tags(); track $index) {
+    <li
+      class="sidebar-navigation-list-item-desktop"
+      [class.bg-neutral-100]="tag === selectedTag()"
+      (click)="taggedNotesOutput.emit(tag)"
+    >
+      <div class="sidebar-navigation-list-item-icon-wrapper">
+        <img
+          [src]="'images/icon-tag' + (tag === selectedTag() ? '-blue-500' : '') + '.svg'"
+          alt="Icono de etiqueta"
+          class="sidebar-navigation-list-item-icon"
+        />
+      </div>
+      <p class="sidebar-navigation-list-item-text">{{ tag }}</p>
+      @if (tag === selectedTag()) {
+      <div class="sidebar-navigation-list-item-right-arrow-wrapper">
+        <img
+          src="images/icon-arrow-right.svg"
+          alt="Icono de flecha derecha"
+          class="sidebar-navigation-list-item-right-arrow"
+        />
+      </div>
+      }
+    </li>
     }
-  </li>
-  }
+  </div>
+
+  <div class="tags-items-wrapper-mobile-tablet">
+    @for (tag of tags(); track $index) {
+    <li
+      class="sidebar-navigation-list-item-mobile-tablet"
+      [class.bg-neutral-100]="tag === selectedTag()"
+      (click)="taggedNotesOutput.emit(tag)"
+    >
+      <div class="sidebar-navigation-list-item-icon-wrapper">
+        <img
+          [src]="'images/icon-tag' + (tag === selectedTag() ? '-blue-500' : '') + '.svg'"
+          alt="Icono de etiqueta"
+          class="sidebar-navigation-list-item-icon"
+        />
+      </div>
+      <p class="sidebar-navigation-list-item-text">{{ tag }}</p>
+      @if (tag === selectedTag()) {
+      <div class="sidebar-navigation-list-item-right-arrow-wrapper">
+        <img
+          src="images/icon-arrow-right.svg"
+          alt="Icono de flecha derecha"
+          class="sidebar-navigation-list-item-right-arrow"
+        />
+      </div>
+      }
+    </li>
+    @if ($index + 1 < tags().length) {
+    <hr class="text-neutral-200" />
+    } }
+  </div>
 </div>

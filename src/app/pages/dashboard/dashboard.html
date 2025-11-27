@@ -2,6 +2,8 @@
   <app-sidebar-navigation
     [tags]="tags"
     [allNotesInput]="allNotesInput"
+    [archiveNotesInput]="archiveNotesInput"
+    [taggedNotesInput]="taggedNotesInput"
     [searchNotesInput]="searchNotesInput"
     (allNotesOutput)="onAllNotes()"
     (archivedNotesOutput)="onArchivedNotes()"
@@ -9,6 +11,7 @@
   ></app-sidebar-navigation>
   <app-notes
     [notes]="editedNotes"
+    [allNotes]="notes"
     [title]="title"
     (archiveNote)="onArchiveNote($event)"
     (restoreNote)="onRestoreNote($event)"
@@ -16,5 +19,6 @@
     (allNotesOutput)="onAllNotes()"
     (archivedNotesOutput)="onArchivedNotes()"
     (searchNotesOutput)="onSearchNotes($event)"
+    (taggedNotesOutput)="onTaggedNotes($event)"
   ></app-notes>
 </div>

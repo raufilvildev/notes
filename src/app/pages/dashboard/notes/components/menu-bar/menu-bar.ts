@@ -8,7 +8,9 @@ import { Component, output } from '@angular/core';
 })
 export class MenuBar {
   allNotesOutput = output<void>();
+  searchNotesOutput = output<void>();
   archivedNotesOutput = output<void>();
+  tagsOutput = output<void>();
 
   activeButtons: boolean[] = [true, false, false, false, false];
 }

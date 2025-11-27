@@ -2,7 +2,7 @@
 @import './../../../../../../styles.css';
 
 .sidebar-all-notes-wrapper {
-  @apply flex flex-col gap-4 relative h-full;
+  @apply pl-8 pr-4 py-5 flex flex-col gap-4 relative h-full overflow-y-auto;
 }
 
 .desktop {
@@ -10,15 +10,23 @@
 }
 
 .mobile-tablet {
-  @apply desktop:hidden fixed bottom-[76px] tablet:bottom-[99.41px] right-5 z-10 rounded-full w-12 h-12 tablet:w-16 tablet:h-16 flex justify-center items-center p-0;
+  @apply desktop:hidden fixed bottom-[72px] tablet:bottom-[106px] right-4 tablet:right-[35px] z-10 rounded-full w-12 h-12 tablet:w-16 tablet:h-16 flex justify-center items-center p-0;
 }
 
 .icon {
   @apply w-8 h-8;
 }
 
+.title {
+  @apply text-preset-1;
+}
+
 .sidebar-all-notes-list {
   @apply flex flex-col gap-1;
+}
+
+.results-text {
+  @apply text-preset-5;
 }
 
 .sidebar-all-notes-list-item {
@@ -39,4 +47,16 @@
 
 .note-updated-at {
   @apply text-neutral-700 text-preset-6;
+}
+
+.input-wrapper {
+  @apply relative block desktop:hidden;
+}
+
+.input {
+  @apply w-full pl-10.5 pr-4 py-3;
+}
+
+.search-icon {
+  @apply absolute top-1/2 left-4 -translate-y-1/2;
 }
