@@ -15,7 +15,13 @@
       "
     ></app-sidebar-all-notes>
     } @else if (showContent) {
-    <app-content [note]="note"></app-content>
+    <app-content
+      [note]="note"
+      (returnSidebarAllNotes)="showSidebarAllNotes = true; showContent = false; showTags = false"
+      (archiveNote)="archiveNote.emit($event)"
+      (restoreNote)="restoreNote.emit($event)"
+      (deleteNote)="deleteNote.emit($event)"
+    ></app-content>
     } @else if (showTags) {
     <app-tags
       [notes]="allNotes()"

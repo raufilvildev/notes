@@ -9,7 +9,16 @@ import { DatePipe } from '@angular/common';
   styleUrl: './sidebar-all-notes.css',
 })
 export class SidebarAllNotes {
-  constructor() {}
+  constructor() {
+    effect(() => {
+      const notes = this.notes();
+
+      if (notes.length !== this.originalNotes.length) {
+        this.originalNotes = [...notes];
+        this.editedNotes = [...notes];
+      }
+    });
+  }
 
   notes = input<INote[]>([]);
   title = input<string>('');

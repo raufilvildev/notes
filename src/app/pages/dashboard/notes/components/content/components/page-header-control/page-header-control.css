@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@import './../../../../../../../../styles.css';
+
+.page-header-control-wrapper {
+  @apply border-b border-b-neutral-100 pb-4 flex justify-between cursor-pointer;
+}
+
+.return-wrapper {
+  @apply flex items-center gap-1;
+}
+
+.icon {
+  @apply w-[18px] h-[18px];
+}
+
+.delete-archive-cancel-save-wrapper {
+  @apply flex items-center gap-4;
+}
+
+.return-text {
+  @apply text-preset-5 text-neutral-600;
+}
+
+.cancel-text {
+  @apply text-neutral-600 cursor-pointer hover:underline;
+}
+
+.save-text {
+  @apply text-blue-500 cursor-pointer hover:underline;
+}

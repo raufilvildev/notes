@@ -1,0 +1,24 @@
+<div class="page-header-control-wrapper">
+  <div class="return-wrapper" (click)="returnSidebarAllNotes.emit()">
+    <img src="images/icon-arrow-left-neutral-600.svg" alt="Icono de volver" class="icon" />
+    <p class="return-text">Volver</p>
+  </div>
+  <div class="delete-archive-cancel-save-wrapper">
+    <img
+      src="images/icon-delete-neutral-600.svg"
+      alt="Icono de borrar"
+      class="icon"
+      (click)="onDeleteNote()"
+    />
+    <img
+      [src]="
+        'images/icon-' + (note()?.status === 'active' ? 'archive' : 'restore') + '-neutral-600.svg'
+      "
+      alt="Icono de archivar"
+      class="icon"
+      (click)="onArchiveRestoreNote()"
+    />
+    <p class="cancel-text">Cancelar</p>
+    <p class="save-text">Guardar nota</p>
+  </div>
+</div>

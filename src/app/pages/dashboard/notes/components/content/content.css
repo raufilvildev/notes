@@ -38,5 +38,5 @@
 }
 
 .buttons-wrapper {
-  @apply flex items-center gap-4;
+  @apply hidden desktop:flex items-center gap-4;
 }

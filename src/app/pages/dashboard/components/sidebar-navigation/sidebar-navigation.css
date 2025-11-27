@@ -46,5 +46,5 @@
 }
 
 app-tags {
-  @apply flex items-stretch overflow-hidden;
+  @apply flex items-stretch overflow-hidden desktop:overflow-y-auto;
 }

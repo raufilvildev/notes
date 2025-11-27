@@ -1,5 +1,12 @@
 @if (note()) {
 <div class="content-wrapper">
+  <app-page-header-control
+    [note]="note()"
+    (returnSidebarAllNotes)="returnSidebarAllNotes.emit()"
+    (archiveNote)="archiveNote.emit($event)"
+    (restoreNote)="restoreNote.emit($event)"
+    (deleteNote)="deleteNote.emit($event)"
+  ></app-page-header-control>
   <h3 class="note-title">{{ note()?.title }}</h3>
   <div class="tags-status-updated-at-wrapper">
     <div class="icon-title-value-wrapper">

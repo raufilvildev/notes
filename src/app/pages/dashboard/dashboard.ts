@@ -29,7 +29,7 @@ export class Dashboard {
     },
     {
       uuid: 'd02b5c91-7a83-4dc8-9f7f-14abbd1a7003',
-      title: 'Tareas pendientes',
+      title: 'Archivado - Tareas pendientes',
       content: 'Revisar correos importantes y preparar reunión del viernes.',
       tags: ['Trabajo'],
       updated_at: new Date('2025-01-10'),
@@ -45,7 +45,7 @@ export class Dashboard {
     },
     {
       uuid: '0fa22c8b-2600-4c52-a3e0-d1b0b8c99005',
-      title: 'Notas de la reunión',
+      title: 'Archivado - Notas de la reunión',
       content: 'Puntos clave: automatización, mejoras UX, definición de roadmap Q1.',
       tags: ['Trabajo', 'Reunión'],
       updated_at: new Date('2025-01-07'),
@@ -77,7 +77,7 @@ export class Dashboard {
     },
     {
       uuid: '39bb2214-951e-4594-b423-559f8055f009',
-      title: 'Plan de viaje',
+      title: 'Archivado - Plan de viaje',
       content: 'Destino: Lisboa. Buscar alojamiento y planificar rutas a pie.',
       tags: ['Viaje', 'Personal'],
       updated_at: new Date('2025-01-04'),
@@ -93,7 +93,7 @@ export class Dashboard {
     },
     {
       uuid: '90ae9912-b811-41c1-941f-d24772699011',
-      title: 'Mantenimiento del coche',
+      title: 'Archivado - Mantenimiento del coche',
       content: 'Cambiar aceite y revisar presión de neumáticos.',
       tags: ['Personal', 'Coche'],
       updated_at: new Date('2025-01-01'),
@@ -117,7 +117,7 @@ export class Dashboard {
     },
     {
       uuid: 'da55e21f-99cb-414a-900c-8c2b867fe014',
-      title: 'Ideas para newsletter',
+      title: 'Archivado - Ideas para newsletter',
       content: 'Tema: productividad, herramientas modernas, accesibilidad.',
       tags: ['Contenido', 'Newsletter'],
       updated_at: new Date('2025-01-13'),
@@ -141,7 +141,7 @@ export class Dashboard {
     },
     {
       uuid: '514008e5-fe6a-461c-85c6-26a66fbd7017',
-      title: 'Notas de brainstorming',
+      title: 'Archivado - Notas de brainstorming',
       content: 'Explorar gamificación en aplicaciones educativas.',
       tags: ['Ideas', 'Investigación'],
       updated_at: new Date('2025-01-02'),
@@ -157,7 +157,7 @@ export class Dashboard {
     },
     {
       uuid: 'a5ddb98a-f62c-41fd-9bd4-ec83bae20019',
-      title: 'Objetivos del año',
+      title: 'Archivado - Objetivos del año',
       content: 'Aprender Rust, mejorar nivel de inglés, correr una media maratón.',
       tags: ['Objetivos', 'Personal'],
       updated_at: new Date('2025-01-01'),
