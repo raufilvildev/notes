@@ -32,3 +32,17 @@ app-sidebar-right-menu {
 app-tags {
   @apply flex-1 overflow-y-auto;
 }
+
+.settings-wrapper-desktop {
+  @apply basis-full flex items-stretch;
+}
+
+app-settings-menu {
+  @apply basis-[272px] flex items-stretch border-r border-r-neutral-200;
+}
+
+app-color-theme,
+app-font-theme,
+app-change-password {
+  @apply flex-1 flex items-stretch;
+}

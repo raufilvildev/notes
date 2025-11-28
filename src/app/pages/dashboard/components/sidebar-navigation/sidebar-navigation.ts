@@ -35,12 +35,22 @@ export class SidebarNavigation {
         return;
       }
     });
+
+    effect(() => {
+      const settingsEvent = this.settingsEvent();
+
+      if (settingsEvent > 0) {
+        this.selectedTag = '$$SETTINGS';
+        return;
+      }
+    });
   }
 
   tags = input<string[]>();
   activeEvent = input<number>(0);
   archiveEvent = input<number>(0);
   searchEvent = input<number>(0);
+  settingsEvent = input<number>(0);
 
   activeNotesOutput = output<void>();
   archivedNotesOutput = output<void>();

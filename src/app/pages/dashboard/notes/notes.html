@@ -3,6 +3,9 @@
     [title]="title()"
     (activeNotesOutput)="activeNotesOutput.emit()"
     (searchNotesOutput)="searchNotesOutput.emit($event)"
+    (settingsOutput)="
+      showSettings = true; this.settingsPage = '$$COLOR-THEME'; settingsOutput.emit()
+    "
   ></app-page-header>
 
   <!-- Mobile, tablet -->
@@ -39,7 +42,7 @@
   </div>
 
   <!-- Desktop -->
-
+  @if (!showSettings) {
   <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper-desktop">
     <app-sidebar-all-notes
       [notes]="notes()"
@@ -54,4 +57,21 @@
       (deleteNote)="deleteNote.emit($event)"
     ></app-sidebar-right-menu>
   </div>
+  } @else {
+  <div class="settings-wrapper-desktop">
+    <app-settings-menu
+      (colorTheme)="settingsPage = '$$COLOR-THEME'"
+      (fontTheme)="settingsPage = '$$FONT-THEME'"
+      (changePassword)="settingsPage = '$$CHANGE-PASSWORD'"
+      [settingsPage]="settingsPage"
+    ></app-settings-menu>
+    @if (settingsPage === '$$COLOR-THEME') {
+    <app-color-theme></app-color-theme>
+    } @else if (settingsPage === '$$FONT-THEME') {
+    <app-font-theme></app-font-theme>
+    } @else if (settingsPage === '$$CHANGE-PASSWORD') {
+    <app-change-password></app-change-password>
+    }
+  </div>
+  }
 </div>

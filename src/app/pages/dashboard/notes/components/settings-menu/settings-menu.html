@@ -1,0 +1,49 @@
+<ul class="settings-menu-wrapper">
+  <li
+    class="settings-menu-item"
+    (click)="colorTheme.emit()"
+    [class.bg-neutral-100]="settingsPage() === '$$COLOR-THEME'"
+  >
+    <img src="images/icon-sun.svg" alt="Icono de tema" class="icon" />
+    <p class="item-text">Tema</p>
+    <img
+      src="images/icon-arrow-right.svg"
+      alt="Icono de flecha derecha"
+      class="arrow-right-icon"
+      [hidden]="settingsPage() !== '$$COLOR-THEME'"
+    />
+  </li>
+  <li
+    class="settings-menu-item"
+    (click)="fontTheme.emit()"
+    [class.bg-neutral-100]="settingsPage() === '$$FONT-THEME'"
+  >
+    <img src="images/icon-font.svg" alt="Icono de " class="icon" />
+    <p class="item-text">Fuente</p>
+    <img
+      src="images/icon-arrow-right.svg"
+      alt="Icono de flecha derecha"
+      class="arrow-right-icon"
+      [hidden]="settingsPage() !== '$$FONT-THEME'"
+    />
+  </li>
+  <li
+    class="settings-menu-item"
+    (click)="changePassword.emit()"
+    [class.bg-neutral-100]="settingsPage() === '$$CHANGE-PASSWORD'"
+  >
+    <img src="images/icon-lock.svg" alt="Icono de cambio de contraseña" class="icon" />
+    <p class="item-text">Cambiar la contraseña</p>
+    <img
+      src="images/icon-arrow-right.svg"
+      alt="Icono de flecha derecha"
+      class="arrow-right-icon"
+      [hidden]="settingsPage() !== '$$CHANGE-PASSWORD'"
+    />
+  </li>
+  <hr class="text-neutral-200" />
+  <li class="settings-menu-item">
+    <img src="images/icon-logout.svg" alt="Icono de cerrar sesión" class="icon" />
+    <p class="item-text">Cerrar sesión</p>
+  </li>
+</ul>

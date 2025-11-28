@@ -178,6 +178,8 @@ export class Dashboard {
   activeEvent: number = 0;
   archiveEvent: number = 0;
   searchEvent: number = 0;
+  sidebarNavigationEvent: number = 0;
+  settingsEvent: number = 0;
 
   ngOnInit() {
     this.onActiveNotes();

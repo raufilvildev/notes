@@ -11,6 +11,7 @@ export class PageHeader {
 
   activeNotesOutput = output<void>();
   searchNotesOutput = output<string>();
+  settingsOutput = output<void>();
 
   onKeyDownEnter(search: string) {
     if (!search) {

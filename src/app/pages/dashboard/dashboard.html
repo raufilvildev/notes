@@ -4,19 +4,22 @@
     [activeEvent]="activeEvent"
     [archiveEvent]="archiveEvent"
     [searchEvent]="searchEvent"
-    (activeNotesOutput)="onActiveNotes()"
-    (archivedNotesOutput)="onArchivedNotes()"
-    (taggedNotesOutput)="onTaggedNotes($event)"
+    [settingsEvent]="settingsEvent"
+    (activeNotesOutput)="onActiveNotes(); sidebarNavigationEvent += 1"
+    (archivedNotesOutput)="onArchivedNotes(); sidebarNavigationEvent += 1"
+    (taggedNotesOutput)="onTaggedNotes($event); sidebarNavigationEvent += 1"
   ></app-sidebar-navigation>
   <app-notes
     [notes]="editedNotes"
     [allNotes]="notes"
     [title]="title"
+    [sidebarNavigationEvent]="sidebarNavigationEvent"
     (activeNotesOutput)="onActiveNotes()"
     (archiveNote)="onArchiveNote($event)"
     (restoreNote)="onRestoreNote($event)"
     (deleteNote)="onDeleteNote($event)"
     (saveNote)="onSaveNote($event)"
     (searchNotesOutput)="onSearchNotes($event)"
+    (settingsOutput)="title = 'Ajustes';settingsEvent +=1"
   ></app-notes>
 </div>

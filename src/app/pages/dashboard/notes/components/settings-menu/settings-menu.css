@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+@import '../../../../../../styles.css';
+
+.settings-menu-wrapper {
+  @apply flex-1 pl-8 pr-4 py-5 flex flex-col gap-2;
+}
+
+.settings-menu-item {
+  @apply flex items-center gap-2 p-2 hover:bg-neutral-100 rounded-md cursor-pointer;
+}
+
+.icon {
+  @apply w-5 h-5;
+}
+
+.item-text {
+  @apply flex-1 text-neutral-950 text-preset-4;
+}
+
+.arrow-right-icon {
+  @apply w-1.5 h-2.5;
+}
