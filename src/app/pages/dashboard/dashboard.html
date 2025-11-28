@@ -1,11 +1,10 @@
 <div class="dashboard-wrapper">
   <app-sidebar-navigation
     [tags]="tags"
-    [allNotesInput]="allNotesInput"
-    [archiveNotesInput]="archiveNotesInput"
-    [taggedNotesInput]="taggedNotesInput"
-    [searchNotesInput]="searchNotesInput"
-    (allNotesOutput)="onAllNotes()"
+    [activeEvent]="activeEvent"
+    [archiveEvent]="archiveEvent"
+    [searchEvent]="searchEvent"
+    (activeNotesOutput)="onActiveNotes()"
     (archivedNotesOutput)="onArchivedNotes()"
     (taggedNotesOutput)="onTaggedNotes($event)"
   ></app-sidebar-navigation>
@@ -13,12 +12,11 @@
     [notes]="editedNotes"
     [allNotes]="notes"
     [title]="title"
+    (activeNotesOutput)="onActiveNotes()"
     (archiveNote)="onArchiveNote($event)"
     (restoreNote)="onRestoreNote($event)"
     (deleteNote)="onDeleteNote($event)"
-    (allNotesOutput)="onAllNotes()"
-    (archivedNotesOutput)="onArchivedNotes()"
+    (saveNote)="onSaveNote($event)"
     (searchNotesOutput)="onSearchNotes($event)"
-    (taggedNotesOutput)="onTaggedNotes($event)"
   ></app-notes>
 </div>

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { INote } from '../../../interfaces/i-note';
 import { PageHeader } from './components/page-header/page-header';
 import { SidebarAllNotes } from './components/sidebar-all-notes/sidebar-all-notes';
@@ -14,6 +14,13 @@ import { Tags } from '../components/sidebar-navigation/components/tags/tags';
   styleUrl: './notes.css',
 })
 export class Notes {
+  constructor() {
+    effect(() => {
+      const _ = this.notes();
+      this.note = undefined;
+    });
+  }
+
   notes = input<INote[]>([]);
   allNotes = input<INote[]>([]);
   title = input<string>('');
@@ -21,14 +28,15 @@ export class Notes {
   archiveNote = output<INote>();
   restoreNote = output<INote>();
   deleteNote = output<INote>();
-  allNotesOutput = output<void>();
+  saveNote = output<INote>();
+  cancelNote = output<INote>();
+
+  activeNotesOutput = output<void>();
   archivedNotesOutput = output<void>();
   searchNotesOutput = output<string>();
   taggedNotesOutput = output<string>();
 
   note?: INote;
-  showSidebarAllNotes: boolean = true;
-  showContent: boolean = false;
-  showTags: boolean = false;
+  sectionToShow: string = '';
   showSearchBar: boolean = false;
 }

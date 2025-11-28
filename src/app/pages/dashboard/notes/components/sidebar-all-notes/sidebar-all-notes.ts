@@ -1,4 +1,4 @@
-import { Component, effect, input, output } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, input, output } from '@angular/core';
 import { INote } from '../../../../../interfaces/i-note';
 import { DatePipe } from '@angular/common';
 
@@ -12,15 +12,20 @@ export class SidebarAllNotes {
   constructor() {
     effect(() => {
       const notes = this.notes();
+      const note = this.note();
 
-      if (notes.length !== this.originalNotes.length) {
-        this.originalNotes = [...notes];
-        this.editedNotes = [...notes];
+      this.originalNotes = [...notes];
+      this.editedNotes = [...notes];
+
+      if (!note) {
+        this.selectedNoteUuid = '';
       }
     });
   }
 
   notes = input<INote[]>([]);
+  note = input<INote>();
+  allNotes = input<INote[]>([]);
   title = input<string>('');
   showSearchBar = input<boolean>(false);
 
@@ -30,24 +35,4 @@ export class SidebarAllNotes {
   searchText: string = '';
   originalNotes: INote[] = [];
   editedNotes: INote[] = [];
-
-  ngOnInit() {
-    this.originalNotes = [...this.notes()];
-    this.editedNotes = [...this.notes()];
-  }
-
-  onKeyDownEnter(search: string) {
-    this.searchText = search;
-    if (search === '') {
-      this.editedNotes = [...this.notes()];
-      return;
-    }
-
-    this.editedNotes = this.originalNotes.filter(
-      (note) =>
-        note.title.includes(search) ||
-        note.content.includes(search) ||
-        note.tags.some((tag) => tag.includes(search))
-    );
-  }
 }

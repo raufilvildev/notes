@@ -12,12 +12,7 @@
   <h2 class="title text-neutral-950">{{ title() }}</h2>
   } @if (showSearchBar()) {
   <div class="input-wrapper">
-    <input
-      type="text"
-      class="input"
-      placeholder="Busca por título, contenido, etiquetas..."
-      (keydown.enter)="onKeyDownEnter($event.target.value)"
-    />
+    <input type="text" class="input" placeholder="Busca por título, contenido, etiquetas..." />
     <img src="images/icon-search.svg" alt="Icono de búsqueda" class="search-icon" />
   </div>
   }

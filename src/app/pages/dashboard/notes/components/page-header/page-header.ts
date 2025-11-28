@@ -9,12 +9,12 @@ import { Component, input, output } from '@angular/core';
 export class PageHeader {
   title = input<string>('');
 
-  allNotesOutput = output<void>();
+  activeNotesOutput = output<void>();
   searchNotesOutput = output<string>();
 
   onKeyDownEnter(search: string) {
     if (!search) {
-      this.allNotesOutput.emit();
+      this.activeNotesOutput.emit();
       return;
     }
     this.searchNotesOutput.emit(search);

@@ -1,23 +1,23 @@
-@if (note()) {
+@if (noteValue) {
 <div class="content-wrapper">
   <app-page-header-control
-    [note]="note()"
+    [note]="noteValue"
     (returnSidebarAllNotes)="returnSidebarAllNotes.emit()"
     (archiveNote)="archiveNote.emit($event)"
     (restoreNote)="restoreNote.emit($event)"
     (deleteNote)="deleteNote.emit($event)"
   ></app-page-header-control>
-  <h3 class="note-title">{{ note()?.title }}</h3>
+  <input class="note-title" [value]="textInputTitle" (input)="onTextInputTitle($event)" />
   <div class="tags-status-updated-at-wrapper">
     <div class="icon-title-value-wrapper">
       <div class="icon-title-wrapper">
         <img src="images/icon-tag.svg" alt="Icono de etiqueta" class="icon" />
         <p class="title">Etiquetas</p>
       </div>
-      <p class="value">{{ (note()?.tags || []).join(', ') }}</p>
+      <input type="text" class="value" [value]="textInputTags" (input)="onTextInputTags($event)" />
     </div>
 
-    @if (note()?.status === 'archived') {
+    @if (noteValue.status === 'archived') {
     <div class="icon-title-value-wrapper">
       <div class="icon-title-wrapper">
         <img src="images/icon-status.svg" alt="Icono de estado" class="icon" />
@@ -32,15 +32,15 @@
         <img src="images/icon-clock.svg" alt="Icono de reloj" class="icon" />
         <p class="title">Última vez editado</p>
       </div>
-      <p class="value">{{ note()?.updated_at | date : 'mediumDate' }}</p>
+      <p class="value">{{ noteValue.updated_at | date : 'mediumDate' }}</p>
     </div>
   </div>
   <hr class="text-neutral-200" />
-  <div class="content">{{ note()?.content }}</div>
-  <hr class="text-neutral-200" />
+  <textarea class="content" [value]="textArea" (input)="onTextAreaInput($event)"></textarea>
+  <hr class="text-neutral-200 hidden desktop:block" />
   <div class="buttons-wrapper">
-    <button class="button primary-button">Guardar nota</button>
-    <button class="button secondary-button">Cancelar</button>
+    <button class="button primary-button" (click)="onSave()">Guardar nota</button>
+    <button class="button secondary-button" (click)="onCancel()">Cancelar</button>
   </div>
 </div>
 }

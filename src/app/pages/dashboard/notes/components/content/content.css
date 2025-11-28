@@ -6,7 +6,7 @@
 }
 
 .note-title {
-  @apply text-preset-1;
+  @apply text-preset-1 focus:outline-0;
 }
 
 .tags-status-updated-at-wrapper {
@@ -30,11 +30,11 @@
 }
 
 .value {
-  @apply text-neutral-950 text-preset-5;
+  @apply flex-1 text-neutral-950 text-preset-5 focus:outline-0;
 }
 
 .content {
-  @apply flex-1 text-neutral-800 text-preset-5;
+  @apply flex-1 text-neutral-800 text-preset-5 focus:outline-0 resize-none;
 }
 
 .buttons-wrapper {

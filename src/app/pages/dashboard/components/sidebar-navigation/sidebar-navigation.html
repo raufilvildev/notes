@@ -6,18 +6,18 @@
     <div class="active-archived-notes-wrapper">
       <li
         class="sidebar-navigation-list-item"
-        [class.bg-neutral-100]="allNotes"
-        (click)="allNotesOutput.emit(); allNotes = true; archivedNotes = false; selectedTag = ''"
+        [class.bg-neutral-100]="selectedTag === '$$HOME'"
+        (click)="selectedTag = '$$HOME'; activeNotesOutput.emit()"
       >
         <div class="sidebar-navigation-list-item-icon-wrapper">
           <img
-            [src]="'images/icon-home' + (allNotes ? '-blue-500' : '') + '.svg'"
+            [src]="'images/icon-home' + (selectedTag === '$$HOME' ? '-blue-500' : '') + '.svg'"
             alt=""
             class="sidebar-navigation-list-item-icon"
           />
         </div>
         <p class="sidebar-navigation-list-item-text">Todas las notas</p>
-        @if (allNotes) {
+        @if (selectedTag === '$$HOME') {
         <div class="sidebar-navigation-list-item-right-arrow-wrapper">
           <img
             src="images/icon-arrow-right.svg"
@@ -29,20 +29,20 @@
       </li>
       <li
         class="sidebar-navigation-list-item"
-        [class.bg-neutral-100]="archivedNotes"
-        (click)="
-          archivedNotesOutput.emit(); allNotes = false; archivedNotes = true; selectedTag = ''
-        "
+        [class.bg-neutral-100]="selectedTag === '$$ARCHIVE'"
+        (click)="selectedTag = '$$ARCHIVE'; archivedNotesOutput.emit()"
       >
         <div class="sidebar-navigation-list-item-icon-wrapper">
           <img
-            [src]="'images/icon-archive' + (archivedNotes ? '-blue-500' : '') + '.svg'"
+            [src]="
+              'images/icon-archive' + (selectedTag === '$$ARCHIVE' ? '-blue-500' : '') + '.svg'
+            "
             alt="Icono de archivar"
             class="sidebar-navigation-list-item-icon"
           />
         </div>
         <p class="sidebar-navigation-list-item-text">Notas archivadas</p>
-        @if (archivedNotes) {
+        @if (selectedTag === '$$ARCHIVE') {
         <div class="sidebar-navigation-list-item-right-arrow-wrapper">
           <img
             src="images/icon-arrow-right.svg"
@@ -58,12 +58,7 @@
     <app-tags
       [tags]="tags() || []"
       [selectedTag]="selectedTag"
-      (taggedNotesOutput)="
-        taggedNotesOutput.emit($event);
-        allNotes = false;
-        archivedNotes = false;
-        selectedTag = $event
-      "
+      (taggedNotesOutput)="selectedTag = $event; taggedNotesOutput.emit($event)"
     ></app-tags>
   </ul>
 </div>

@@ -1,66 +1,52 @@
 <div class="notes-wrapper">
   <app-page-header
     [title]="title()"
-    (allNotesOutput)="allNotesOutput.emit()"
+    (activeNotesOutput)="activeNotesOutput.emit()"
     (searchNotesOutput)="searchNotesOutput.emit($event)"
   ></app-page-header>
+
+  <!-- Mobile, tablet -->
+
   <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper-mobile-tablet">
-    @if (showSidebarAllNotes) {
+    @if (sectionToShow === 'SIDEBAR_ALL_NOTES') {
     <app-sidebar-all-notes
       [notes]="notes()"
+      [allNotes]="allNotes()"
       [title]="title()"
       [showSearchBar]="showSearchBar"
-      (noteOutput)="
-        note = $event; showSidebarAllNotes = false; showContent = true; showTags = false
-      "
+      (noteOutput)="note = $event; sectionToShow = 'CONTENT'"
     ></app-sidebar-all-notes>
-    } @else if (showContent) {
+    } @else if (sectionToShow === 'CONTENT') {
     <app-content
       [note]="note"
-      (returnSidebarAllNotes)="showSidebarAllNotes = true; showContent = false; showTags = false"
+      (returnSidebarAllNotes)="sectionToShow = 'SIDEBAR_ALL_NOTES'"
       (archiveNote)="archiveNote.emit($event)"
       (restoreNote)="restoreNote.emit($event)"
       (deleteNote)="deleteNote.emit($event)"
     ></app-content>
-    } @else if (showTags) {
+    } @else if (sectionToShow === 'TAGS') {
     <app-tags
       [notes]="allNotes()"
-      (taggedNotesOutput)="
-        taggedNotesOutput.emit($event);
-        showSidebarAllNotes = true;
-        showContent = false;
-        showTags = false;
-        showSearchBar = false
-      "
+      (taggedNotesOutput)="taggedNotesOutput.emit($event); sectionToShow = 'SIDEBAR_ALL_NOTES'"
     ></app-tags>
     }
     <app-menu-bar
-      (allNotesOutput)="
-        allNotesOutput.emit();
-        showSidebarAllNotes = true;
-        showContent = false;
-        showTags = false;
-        showSearchBar = false
-      "
-      (archivedNotesOutput)="
-        archivedNotesOutput.emit();
-        showSidebarAllNotes = true;
-        showContent = false;
-        showTags = false;
-        showSearchBar = false
-      "
-      (tagsOutput)="
-        showSidebarAllNotes = false; showContent = false; showTags = true; showSearchBar = false
-      "
-      (searchNotesOutput)="
-        showSidebarAllNotes = true; showContent = false; showTags = false; showSearchBar = true
-      "
+      (allNotesOutput)="activeNotesOutput.emit(); sectionToShow = 'SIDEBAR_ALL_NOTES'"
+      (archivedNotesOutput)="archivedNotesOutput.emit(); sectionToShow = 'SIDEBAR_ALL_NOTES'"
+      (tagsOutput)="sectionToShow = 'TAGS'"
+      (searchNotesOutput)="sectionToShow = 'SIDEBAR_ALL_NOTES'; showSearchBar = true"
     ></app-menu-bar>
   </div>
 
+  <!-- Desktop -->
+
   <div class="sidebar-all-notes-content-sidebar-right-menu-wrapper-desktop">
-    <app-sidebar-all-notes [notes]="notes()" (noteOutput)="note = $event"></app-sidebar-all-notes>
-    <app-content [note]="note"></app-content>
+    <app-sidebar-all-notes
+      [notes]="notes()"
+      (noteOutput)="note = $event"
+      [note]="note"
+    ></app-sidebar-all-notes>
+    <app-content [note]="note" (saveNote)="saveNote.emit($event)"></app-content>
     <app-sidebar-right-menu
       [note]="note"
       (archiveNote)="archiveNote.emit($event)"

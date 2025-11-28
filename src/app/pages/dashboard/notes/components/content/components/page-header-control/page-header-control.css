@@ -2,7 +2,7 @@
 @import './../../../../../../../../styles.css';
 
 .page-header-control-wrapper {
-  @apply border-b border-b-neutral-100 pb-4 flex justify-between cursor-pointer;
+  @apply border-b border-b-neutral-100 pb-4 flex desktop:hidden justify-between cursor-pointer;
 }
 
 .return-wrapper {

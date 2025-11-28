@@ -175,65 +175,99 @@ export class Dashboard {
   editedNotes: INote[] = [];
   tags: string[] = [];
   title: string = 'Todas las notas';
-  allNotesInput: boolean = true;
-  archiveNotesInput: boolean = false;
-  taggedNotesInput: string = '';
-  searchNotesInput: boolean = false;
+  activeEvent: number = 0;
+  archiveEvent: number = 0;
+  searchEvent: number = 0;
 
   ngOnInit() {
-    this.editedNotes = [...this.notes];
+    this.onActiveNotes();
+    this.setTags();
+  }
+
+  setTags() {
+    this.tags = [];
     this.notes.forEach((note) => {
       const tags = note.tags;
       tags.forEach((tag) => {
         if (!this.tags.includes(tag)) this.tags.push(tag);
       });
     });
+    this.tags.sort();
   }
 
-  onAllNotes() {
+  onActiveNotes() {
     this.title = 'Todas las notas';
-    this.editedNotes = this.notes.filter((note) => note.status === 'active');
-    this.allNotesInput = true;
-    this.archiveNotesInput = false;
-    this.taggedNotesInput = '';
-    this.searchNotesInput = false;
+    this.editedNotes = this.notes
+      .filter((note) => note.status === 'active')
+      .map((note) => ({ ...note }));
+    this.activeEvent = this.activeEvent + 1;
   }
 
   onArchivedNotes() {
     this.title = 'Notas archivadas';
-    this.editedNotes = this.notes.filter((note) => note.status === 'archived');
-    this.allNotesInput = false;
-    this.archiveNotesInput = true;
-    this.taggedNotesInput = '';
-    this.searchNotesInput = false;
+    this.editedNotes = this.notes
+      .filter((note) => note.status === 'archived')
+      .map((note) => ({ ...note }));
+    this.archiveEvent = this.archiveEvent + 1;
   }
 
   onTaggedNotes(tag: string) {
     this.title = `Notas etiquetadas: ${tag}`;
-    this.editedNotes = this.notes.filter((note) => note.tags.includes(tag));
-    this.allNotesInput = false;
-    this.archiveNotesInput = false;
-    this.taggedNotesInput = tag;
-    this.searchNotesInput = false;
+    this.editedNotes = this.notes
+      .filter((note) => note.tags.includes(tag))
+      .map((note) => ({ ...note }));
   }
 
   onSearchNotes(search: string) {
     this.title = `Mostrando resultados para: ${search}`;
-    this.editedNotes = this.notes.filter(
-      (note) =>
-        note.title.includes(search) ||
-        note.content.includes(search) ||
-        note.tags.some((tag) => tag.includes(search))
-    );
-    this.allNotesInput = false;
-    this.searchNotesInput = true;
+    this.editedNotes = this.notes
+      .filter(
+        (note) =>
+          note.title.includes(search) ||
+          note.content.includes(search) ||
+          note.tags.some((tag) => tag.includes(search))
+      )
+      .map((note) => ({ ...note }));
+    this.searchEvent = this.searchEvent + 1;
+  }
+
+  onSaveNote(note: INote) {
+    this.notes = this.notes.map((n) => (n.uuid === note.uuid ? note : n));
+    this.editedNotes = this.editedNotes.map((n) => (n.uuid === note.uuid ? note : n));
+    this.setTags();
   }
 
   onCreateNote() {}
 
-  onArchiveNote(note: INote) {}
+  onArchiveNote(note: INote) {
+    this.notes = this.notes.map((n) => {
+      if (n.uuid === note.uuid) {
+        n.status = 'archived';
+        n.updated_at = new Date();
+      }
+      return { ...n };
+    });
+    this.onArchivedNotes();
+  }
 
-  onRestoreNote(note: INote) {}
+  onRestoreNote(note: INote) {
+    this.notes = this.notes.map((n) => {
+      if (n.uuid === note.uuid) {
+        n.status = 'active';
+        n.updated_at = new Date();
+      }
+      return n;
+    });
+    this.onActiveNotes();
+  }
 
-  onDeleteNote(note: INote) {}
+  onDeleteNote(note: INote) {
+    this.notes = this.notes
+      .filter((n) => n.uuid !== note.uuid)
+      .map((n) => {
+        return { ...n };
+      });
+    note.status === 'active' ? this.onActiveNotes() : this.onArchivedNotes();
+    this.setTags();
+  }
 }
